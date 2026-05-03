@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Manrope:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --color-background: #0e0e0e;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #131313;
+  --color-surface-container: #1a1a1a;
+  --color-surface-container-high: #20201f;
+  --color-surface-container-highest: #262626;
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #adaaaa;
+  --color-outline-variant: #484847;
+
+  --color-primary: #ddffaf;
+  --color-primary-dim: #99ee00;
+  --color-primary-container: #a3fe00;
+  --color-on-primary-container: #395d00;
+  --color-error: #ff7351;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Manrope", sans-serif;
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-foreground: var(--foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+@layer base {
+  :root, .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 85 100% 50%;
+    --primary-foreground: 84 100% 18%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 67%;
+    --destructive: 12 100% 66%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 60 1% 28%;
+    --input: 60 1% 28%;
+    --ring: 85 100% 50%;
+    --radius: 0px;
+  }
+  
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-on-surface font-body;
+  }
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .moto-logo {
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.05em;
+    color: #a3fe00;
+    position: relative;
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8));
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='50'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' /%3E%3CfeThreshold threshold='0.5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' /%3E%3C/svg%3E");
+    mask-size: 150px;
+    mask-repeat: repeat;
+  }
+
+  .technical-dark-bg {
+    background-color: #0e0e0e;
+    background-image: 
+      linear-gradient(rgba(26, 26, 26, 0.7) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 26, 26, 0.7) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: relative;
+  }
+  
+  .technical-dark-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, #0e0e0e 100%);
+    pointer-events: none;
+  }
+}
