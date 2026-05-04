@@ -1,7 +1,7 @@
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/5492995363746"
+      href={`https://wa.me/${process.env.NEXT_PUBLIC_WPP}`}
       target="_blank"
       rel="noopener noreferrer"
       // Aquí está la magia: Aumentamos el padding (px-6 py-4), agregamos el efecto "before:" para la ola de color, 
