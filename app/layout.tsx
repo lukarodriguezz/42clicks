@@ -24,7 +24,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       {/* antialiased para fuentes nítidas y bg-background para asegurar el fondo negro en móvil */}
-      <body className="bg-background text-on-surface antialiased overflow-x-hidden">
+      <body className="bg-background text-on-surface antialiased">
         {children}
       </body>
     </html>

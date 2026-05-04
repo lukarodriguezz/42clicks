@@ -30,8 +30,8 @@ export default function BrandsSection() {
           </h2>
         </div>
 
-        {/* Contenedor del Carrusel con máscara de difuminado en los bordes */}
-        <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+        {/* Contenedor del Carrusel */}
+        <div className="relative overflow-hidden">
           <InfiniteSlider gap={60} reverse speed={50} speedOnHover={25}>
             {mxBrands.map((logo) => (
               <img

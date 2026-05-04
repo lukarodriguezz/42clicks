@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
+    <footer className="py-12 md:py-24 bg-[#050505] relative z-10 overflow-hidden border-t border-white/5">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-primary-container/50 to-transparent blur-[2px]"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-32 flex flex-col justify-between gap-8 border-t border-white/10 pt-10 text-[9px] font-bold uppercase tracking-[0.25em] text-white/30 md:flex-row md:items-center">
+        <div className="mt-16 md:mt-32 flex flex-col justify-between gap-8 border-t border-white/10 pt-10 text-[9px] font-bold uppercase tracking-[0.25em] text-white/30 md:flex-row md:items-center">
           <p>© 2026 42CLICKS KINETIC ENG. TODOS LOS DERECHOS RESERVADOS.</p>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-primary-container transition-colors">Privacidad</Link>

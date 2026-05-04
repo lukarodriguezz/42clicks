@@ -25,9 +25,9 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-[#020202] relative overflow-hidden border-b border-white/5">
+    <section className="py-12 md:py-24 bg-[#020202] relative overflow-hidden border-b border-white/5">
       <div className="section-container relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-10 md:mb-16">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-[1px] bg-primary-container/60"></div>
             <p className="text-primary-container uppercase text-[9px] tracking-[0.3em] font-bold italic-none">Feedback de Pilotos</p>
@@ -40,18 +40,14 @@ export default function TestimonialsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
-            <motion.div 
+            <div 
               key={i}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-[#0a0a0a] p-10 border border-white/5 relative group hover:border-primary-container/30 transition-colors duration-500 rounded-sm"
+              className="bg-[#0a0a0a] p-6 sm:p-10 border border-white/5 relative group hover:border-primary-container/30 transition-colors duration-500 rounded-sm"
             >
               <div className="absolute top-6 right-6 text-6xl font-headline italic leading-none text-white/[0.02] group-hover:text-primary-container/10 transition-colors pointer-events-none">"</div>
 
               <div className="mb-10 relative z-10">
-                <p className="text-white/70 text-[11px] uppercase tracking-widest leading-[1.8] font-medium italic">
+                <p className="text-white/70 text-[11px] md:text-xs lg:text-sm uppercase tracking-widest leading-[1.8] font-medium italic">
                   {t.quote}
                 </p>
               </div>
@@ -65,7 +61,7 @@ export default function TestimonialsSection() {
                   <p className="text-primary-container uppercase text-[8px] font-bold tracking-[0.2em] mt-1">{t.role}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

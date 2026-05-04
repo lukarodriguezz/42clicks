@@ -27,10 +27,6 @@ export default function AnatomySection() {
           
           <div className="lg:col-span-5 order-2 lg:order-1">
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
               className="mb-10 md:mb-12"
             >
               <div className="flex items-center gap-4 mb-4">
@@ -46,10 +42,6 @@ export default function AnatomySection() {
               {features.map((feature, idx) => (
                 <motion.div 
                   key={feature.id} 
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
                   className="group flex gap-5 sm:gap-6 items-start p-6 bg-white/[0.02] border border-white/5 hover:border-primary-container/30 transition-all duration-300 rounded-sm"
                 >
                   <span className="text-primary-container font-headline font-black italic text-xl opacity-40 group-hover:opacity-100 transition-opacity">

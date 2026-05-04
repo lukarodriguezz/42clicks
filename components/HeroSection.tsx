@@ -11,13 +11,13 @@ export default function HeroSection() {
   });
 
   const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <section 
       ref={containerRef}
       id="inicio" 
-      className="relative flex flex-col justify-center overflow-hidden bg-[#050505] pt-32 pb-24 sm:pt-40 sm:pb-32 md:pt-48 md:pb-40"
+      className="relative flex flex-col justify-center overflow-hidden bg-[#050505] pt-24 pb-16 sm:pt-32 sm:pb-24 md:pt-48 md:pb-40"
     >
       {/* Noise Overlay */}
       <div className="absolute inset-0 z-50 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
@@ -58,20 +58,14 @@ export default function HeroSection() {
           
           <div className="mb-8 md:mb-10">
             <motion.h1 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="font-headline text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[1.1] text-white px-4"
             >
               Sintoniza <br/> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-white">El Límite&nbsp;</span>
+              <span className="text-primary-container">El Límite&nbsp;</span>
             </motion.h1>
           </div>
 
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
             className="text-on-surface-variant font-medium text-xs sm:text-sm md:text-base mb-10 md:mb-12 uppercase tracking-[0.1em] sm:tracking-[0.12em] leading-relaxed max-w-xl mx-auto"
           >
             Ingeniería de alto rendimiento diseñada para dominar el terreno más exigente. Telemetría y Factory Setup.

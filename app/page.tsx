@@ -14,7 +14,7 @@ import BrandsSection from "@/components/BrandsSection"; // <-- 1. Importar aquí
 
 export default function Home() {
   return (
-    <main className="bg-background text-on-surface min-h-screen">
+    <main className="bg-background text-on-surface min-h-screen overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <BrandsSection />
