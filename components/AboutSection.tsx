@@ -1,50 +1,68 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function AboutSection() {
-  // Lógica de blindaje: Animaciones solo en PC
-  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
-  
-  const animImage = isDesktop ? { initial: { opacity: 0, x: -50 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 0.8 } } : {};
-  const animText = isDesktop ? { initial: { opacity: 0, y: 50 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.8, delay: 0.2 } } : {};
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
   return (
-    <section id="nosotros" className="py-24 bg-surface-container-low">
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-0">
+    <section ref={containerRef} id="nosotros" className="py-24 bg-[#020202] relative overflow-hidden border-b border-white/5">
+      {/* Background Typography */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center pointer-events-none opacity-[0.02]">
+        <span className="font-headline text-[25vw] font-black italic uppercase leading-none text-white whitespace-nowrap">
+          LEGADO
+        </span>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-0">
+        
+        {/* Lado Imagen */}
         <motion.div 
-          {...animImage}
-          className="lg:col-span-7 relative group overflow-hidden"
+          style={{ y: y1 }}
+          className="lg:col-span-6 relative group overflow-hidden h-[500px] md:h-[650px] rounded-sm"
         >
+          <div className="absolute inset-0 bg-[#050505]/30 z-10 group-hover:bg-transparent transition-colors duration-700"></div>
           <img 
             src="/images/ktm-42.png" 
             alt="Moto KTM" 
-            className="w-full h-150 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+            className="w-full h-full object-cover grayscale-[100%] contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]" 
           />
-          <div className="absolute inset-0 bg-primary-container/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </motion.div>
 
+        {/* Lado Texto */}
         <motion.div 
-          {...animText}
-          className="lg:col-span-5 bg-background p-12 lg:-ml-12 lg:mt-12 relative z-10 border-t-4 lg:border-t-0 lg:border-l-4 border-primary-container"
+          style={{ y: y2 }}
+          className="lg:col-span-6 bg-[#0a0a0a] p-10 md:p-16 relative z-20 border border-white/5 lg:-ml-10 lg:mt-24 shadow-2xl flex flex-col justify-center rounded-sm"
         >
-          <h2 className="font-headline text-4xl font-black italic uppercase tracking-tighter mb-6">
-            Ingeniería <br/> De Campeones
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-8 h-[1px] bg-primary-container"></div>
+            <span className="text-primary-container text-[9px] font-bold uppercase tracking-[0.3em]">ADN 42Clicks</span>
+          </div>
+
+          <h2 className="font-headline text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 leading-[0.9] text-white">
+            Ingeniería <br/> <span className="text-on-surface-variant/30">De Campeones</span>
           </h2>
-          <p className="text-on-surface-variant mb-6 leading-relaxed">
-            En 42CLICKS, no solo reparamos suspensiones; redefinimos la dinámica de conducción. Nuestra filosofía se basa en la obsesión por el detalle técnico y la telemetría aplicada al mundo real.
+          
+          <p className="text-white/60 mb-10 leading-relaxed text-xs uppercase tracking-widest font-medium max-w-sm">
+            En 42CLICKS, no solo reparamos suspensiones; redefinimos la dinámica de conducción. Nuestra filosofía se basa en la obsesión por el detalle técnico.
           </p>
-          <p className="text-on-surface-variant mb-8 leading-relaxed">
-            Cada setting es una firma personal. Entendemos que cada piloto tiene un ADN único, y nuestras configuraciones están diseñadas para convertir ese potencial en tracción pura.
-          </p>
-          <div className="grid grid-cols-2 gap-8">
+          
+          <div className="grid grid-cols-2 gap-10 border-t border-white/10 pt-10">
             <div>
-              <div className="font-headline text-3xl font-black italic text-primary-container mb-1">15+</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Años de Evolución</div>
+              <div className="font-headline text-4xl font-black italic text-primary-container mb-2 leading-none">15<span className="text-xl">+</span></div>
+              <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">Años de Evolución</div>
             </div>
             <div>
-              <div className="font-headline text-3xl font-black italic text-primary-container mb-1">42</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Clicks de Ajuste</div>
+              <div className="font-headline text-4xl font-black italic text-primary-container mb-2 leading-none">42</div>
+              <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">Clicks de Ajuste</div>
             </div>
           </div>
         </motion.div>

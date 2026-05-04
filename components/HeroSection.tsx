@@ -1,50 +1,104 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
 export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
-      
-      {/* Fondo de Imagen Oscurecido */}
-      <div className="absolute inset-0 z-0">
+    <section 
+      ref={containerRef}
+      id="inicio" 
+      className="relative flex flex-col justify-center overflow-hidden bg-[#050505] py-24 md:py-40"
+    >
+      {/* Noise Overlay */}
+      <div className="absolute inset-0 z-50 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+
+      {/* Parallax Background */}
+      <motion.div 
+        className="absolute inset-0 z-0 origin-top"
+        style={{ y: yBackground }}
+      >
+        <div className="absolute inset-0 bg-[#050505]/40 mix-blend-multiply z-10"></div>
         <img 
           src="/images/hero-moto.png" 
           alt="Motocross rider" 
-          className="w-full h-full object-cover opacity-40 grayscale"
+          className="w-full h-full object-cover object-center opacity-40 grayscale contrast-125"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10"></div>
+      </motion.div>
 
-      {/* Contenedor de Textos (Animación por CSS puro, infalible) */}
-      <div className="relative z-10 text-center px-4 mt-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        
-        <h2 className="text-primary-container font-bold italic tracking-[0.2em] uppercase text-xs md:text-sm mb-4">
-          Precisión absoluta en cada click.
-        </h2>
-        
-        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-black italic uppercase tracking-tighter leading-none mb-6 text-white drop-shadow-xl">
-          Sintoniza <br/> <span className="text-primary-container">El Límite</span>
-        </h1>
-
-        <p className="max-w-md md:max-w-xl mx-auto text-on-surface-variant font-medium text-xs md:text-lg mb-8 uppercase tracking-widest leading-relaxed">
-          Ingeniería de alto rendimiento diseñada para dominar el terreno más exigente. 
-        </p>
-
-        {/* Viñetas estáticas y robustas */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <div className="flex items-center gap-2 border border-primary-container/50 bg-primary-container/10 backdrop-blur-sm text-primary-container px-6 py-3 text-xs font-black uppercase tracking-[0.2em]">
-            <span className="material-symbols-outlined text-sm">memory</span>
-            Telemetría Activa
+      {/* Content Container */}
+      <motion.div 
+        className="max-w-7xl mx-auto px-6 md:px-12 relative z-20"
+        style={{ opacity }}
+      >
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center justify-center gap-4 mb-8"
+          >
+            <div className="w-8 h-[1px] bg-primary-container/60"></div>
+            <h2 className="text-primary-container font-bold tracking-[0.4em] uppercase text-[9px]">
+              Precisión absoluta en cada click
+            </h2>
+            <div className="w-8 h-[1px] bg-primary-container/60"></div>
+          </motion.div>
+          
+          <div className="mb-10">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className="font-headline text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.9] text-white"
+            >
+              Sintoniza <br/> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-white">El Límite</span>
+            </motion.h1>
           </div>
-          <div className="flex items-center gap-2 border border-outline-variant/50 bg-white/5 backdrop-blur-sm text-white px-6 py-3 text-xs font-black uppercase tracking-[0.2em]">
-            <span className="material-symbols-outlined text-sm">tune</span>
-            Setup Factory
-          </div>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-on-surface-variant font-medium text-xs md:text-sm mb-12 uppercase tracking-[0.12em] leading-relaxed max-w-xl mx-auto"
+          >
+            Ingeniería de alto rendimiento diseñada para dominar el terreno más exigente. Telemetría y Factory Setup.
+          </motion.p>
+
+          {/* Action Area */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-6"
+          >
+            <button className="bg-primary-container text-black px-6 py-2.5 text-[9px] font-black uppercase tracking-[0.2em] transition-all hover:brightness-110 active:scale-95">
+              Descubre el Lab
+            </button>
+
+            <div className="flex items-center gap-3 px-6 py-2.5 border border-white/10 bg-white/5 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-[0.2em]">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary-container"></span>
+              </span>
+              Telemetría Activa
+            </div>
+          </motion.div>
+
         </div>
-      </div>
-
-      {/* Número lateral (Solo visible en PC) */}
-      <div className="absolute right-8 bottom-12 hidden lg:flex flex-col items-end gap-1 font-headline italic font-black z-20 opacity-80">
-        <span className="text-primary-container text-8xl leading-none">42</span>
-        <span className="text-white text-xl tracking-tighter uppercase">Clicks of Perfection</span>
-      </div>
+      </motion.div>
     </section>
   );
 }

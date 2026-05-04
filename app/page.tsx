@@ -3,6 +3,8 @@ import HeroSection from "@/components/HeroSection";
 import AnatomySection from "@/components/AnatomySection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import PricingSection from "@/components/PricingSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import MapSection from "@/components/MapSection";
 import Footer from "@/components/Footer";
@@ -15,9 +17,11 @@ export default function Home() {
     <main className="bg-background text-on-surface min-h-screen">
       <Navbar />
       <HeroSection />
-      <BrandsSection /> {/* <-- 2. Colocar aquí */}
+      <BrandsSection />
       <ServicesSection />
+      <PricingSection />
       <AnatomySection />
+      <TestimonialsSection />
       <AboutSection />
       <ContactSection />
       <MapSection />

@@ -15,7 +15,7 @@ const mxBrands = [
 
 export default function BrandsSection() {
   return (
-    <section className="py-16 bg-background border-b border-outline-variant/10 relative overflow-hidden">
+    <section className="py-24 mt-20 bg-background border-b border-outline-variant/10 relative overflow-hidden">
       
       {/* Resplandor de fondo sutil */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-primary-container/5 blur-[100px] rounded-full pointer-events-none"></div>
