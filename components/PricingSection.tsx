@@ -54,7 +54,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative flex flex-col p-10 transition-all duration-500 group rounded-sm ${
+              className={`relative flex flex-col p-6 sm:p-8 md:p-10 transition-all duration-500 group rounded-sm ${
                 plan.highlight 
                   ? "border border-primary-container bg-surface-container shadow-[0_0_50px_rgba(163,254,0,0.08)] scale-100 lg:scale-[1.03] z-10" 
                   : "border border-white/5 bg-surface-container-low hover:border-white/20"

@@ -70,7 +70,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-7 p-10 md:p-16 flex flex-col justify-center bg-[#0a0a0a]"
+          className="lg:col-span-7 p-6 sm:p-10 md:p-16 flex flex-col justify-center bg-[#0a0a0a]"
         >
           <div className="mb-10">
             <h4 className="text-white font-black italic text-2xl md:text-3xl uppercase tracking-tighter mb-4 leading-none">Reserva tu Setup</h4>

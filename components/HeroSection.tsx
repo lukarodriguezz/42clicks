@@ -61,10 +61,10 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="font-headline text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.85] text-white"
+              className="font-headline text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[1.1] text-white px-4"
             >
               Sintoniza <br/> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-white">El Límite</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-white">El Límite&nbsp;</span>
             </motion.h1>
           </div>
 

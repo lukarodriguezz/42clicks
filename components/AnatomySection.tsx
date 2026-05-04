@@ -65,10 +65,10 @@ export default function AnatomySection() {
           </div>
           
           <div className="lg:col-span-7 order-1 lg:order-2 relative h-[350px] sm:h-[450px] md:h-[500px] flex items-center justify-center overflow-hidden lg:overflow-visible">
-            {/* Spinners */}
-            <div className="absolute w-[80%] aspect-square border border-white/5 rounded-full animate-[spin_60s_linear_infinite]"></div>
-            <div className="absolute w-[60%] aspect-square border border-white/5 border-dashed rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
-            <div className="absolute w-40 h-40 md:w-48 md:h-48 bg-primary-container/10 blur-[80px] rounded-full"></div>
+            {/* Spinners responsivos */}
+            <div className="absolute w-[90%] max-w-[400px] md:max-w-none md:w-[80%] aspect-square border border-white/5 rounded-full animate-[spin_60s_linear_infinite]"></div>
+            <div className="absolute w-[70%] max-w-[300px] md:max-w-none md:w-[60%] aspect-square border border-white/5 border-dashed rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
+            <div className="absolute w-[40%] aspect-square bg-primary-container/10 blur-[80px] rounded-full"></div>
             
             <motion.div 
               style={{ y: imageY }}
@@ -87,10 +87,7 @@ export default function AnatomySection() {
               viewport={{ once: true }}
               className="absolute top-1/4 right-[5%] sm:right-[10%] hidden sm:flex items-center gap-3"
             >
-              <div className="w-10 md:w-12 h-[1px] bg-primary-container"></div>
-              <div className="px-3 py-1 bg-primary-container/10 border border-primary-container/30 text-primary-container text-[8px] uppercase tracking-widest font-bold backdrop-blur-md">
-                DLC Coated
-              </div>
+             
             </motion.div>
           </div>
           

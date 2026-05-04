@@ -1,10 +1,23 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 
 export default function AboutSection() {
+  const mounted = useMounted();
+  const [isDesktop, setIsDesktop] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (mounted) {
+      const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
+      checkDesktop();
+      window.addEventListener("resize", checkDesktop);
+      return () => window.removeEventListener("resize", checkDesktop);
+    }
+  }, [mounted]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -39,7 +52,7 @@ export default function AboutSection() {
 
         {/* Lado Texto */}
         <motion.div 
-          style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? y2 : 0 }}
+          style={{ y: isDesktop ? y2 : 0 }}
           className="lg:col-span-6 bg-[#0a0a0a] p-8 sm:p-12 md:p-16 lg:p-20 relative z-20 border border-white/5 lg:-ml-10 lg:mt-24 shadow-2xl flex flex-col justify-center rounded-sm"
         >
           <div className="flex items-center gap-4 mb-6 md:mb-8">
