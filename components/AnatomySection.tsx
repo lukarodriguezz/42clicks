@@ -16,33 +16,33 @@ export default function AnatomySection() {
     offset: ["start end", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
     <section ref={containerRef} id="ingenieria" className="py-24 bg-[#050505] relative overflow-hidden border-b border-white/5">
       <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="section-container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 order-2 lg:order-1">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className="mb-12"
+              className="mb-10 md:mb-12"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-[1px] bg-primary-container"></div>
                 <p className="text-primary-container font-bold uppercase tracking-[0.3em] text-[9px]">INGENIERÍA APLICADA</p>
               </div>
-              <h2 className="font-headline text-white text-4xl md:text-5xl font-black italic uppercase tracking-tighter leading-[0.9]">
+              <h2 className="font-headline text-white text-3xl sm:text-4xl md:text-5xl font-black italic uppercase tracking-tighter leading-[0.9]">
                 Anatomía de <br/> <span className="text-primary-container">Velocidad</span>
               </h2>
             </motion.div>
             
-            <div className="space-y-4">
+            <div className="space-y-4 md:space-y-6">
               {features.map((feature, idx) => (
                 <motion.div 
                   key={feature.id} 
@@ -50,29 +50,29 @@ export default function AnatomySection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group flex gap-6 items-start p-6 bg-white/[0.02] border border-white/5 hover:border-primary-container/30 transition-all duration-300 rounded-sm"
+                  className="group flex gap-5 sm:gap-6 items-start p-6 bg-white/[0.02] border border-white/5 hover:border-primary-container/30 transition-all duration-300 rounded-sm"
                 >
                   <span className="text-primary-container font-headline font-black italic text-xl opacity-40 group-hover:opacity-100 transition-opacity">
                     {feature.id}
                   </span>
                   <div>
-                    <h3 className="text-white font-bold uppercase tracking-widest mb-2 text-[11px] group-hover:text-primary-container transition-colors">{feature.title}</h3>
-                    <p className="text-white/50 text-[11px] leading-relaxed uppercase tracking-wider font-medium">{feature.desc}</p>
+                    <h3 className="text-white font-bold uppercase tracking-widest mb-1.5 text-[11px] group-hover:text-primary-container transition-colors">{feature.title}</h3>
+                    <p className="text-white/50 text-[10px] sm:text-[11px] leading-relaxed uppercase tracking-wider font-medium">{feature.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
           
-          <div className="lg:col-span-7 relative h-[500px] flex items-center justify-center">
+          <div className="lg:col-span-7 order-1 lg:order-2 relative h-[350px] sm:h-[450px] md:h-[500px] flex items-center justify-center overflow-hidden lg:overflow-visible">
             {/* Spinners */}
             <div className="absolute w-[80%] aspect-square border border-white/5 rounded-full animate-[spin_60s_linear_infinite]"></div>
             <div className="absolute w-[60%] aspect-square border border-white/5 border-dashed rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
-            <div className="absolute w-48 h-48 bg-primary-container/10 blur-[90px] rounded-full"></div>
+            <div className="absolute w-40 h-40 md:w-48 md:h-48 bg-primary-container/10 blur-[80px] rounded-full"></div>
             
             <motion.div 
               style={{ y: imageY }}
-              className="relative z-10 w-full max-w-md flex justify-center"
+              className="relative z-10 w-full max-w-[280px] sm:max-w-xs md:max-w-md flex justify-center"
             >
               <img 
                 src="/images/exploded-suspension.png" 
@@ -85,9 +85,9 @@ export default function AnatomySection() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="absolute top-1/4 right-[10%] hidden md:flex items-center gap-3"
+              className="absolute top-1/4 right-[5%] sm:right-[10%] hidden sm:flex items-center gap-3"
             >
-              <div className="w-12 h-[1px] bg-primary-container"></div>
+              <div className="w-10 md:w-12 h-[1px] bg-primary-container"></div>
               <div className="px-3 py-1 bg-primary-container/10 border border-primary-container/30 text-primary-container text-[8px] uppercase tracking-widest font-bold backdrop-blur-md">
                 DLC Coated
               </div>
